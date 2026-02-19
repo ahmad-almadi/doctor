@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
 @layer base {
   * {
     @apply border-gray-800;
@@ -10,6 +12,32 @@
   body {
     @apply bg-medical-dark text-white;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html[dir="rtl"] body {
+    font-family: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html[dir="rtl"] {
+    direction: rtl;
+  }
+
+  html[dir="rtl"] .container {
+    direction: rtl;
+  }
+
+  /* Fix font sizes for Arabic */
+  html[dir="rtl"] h1 {
+    font-size: 1.1em;
+  }
+
+  html[dir="rtl"] h2 {
+    font-size: 1.05em;
+  }
+
+  html[dir="rtl"] .text-5xl,
+  html[dir="rtl"] .text-7xl {
+    font-size: clamp(2rem, 5vw, 3.5rem);
   }
 
   html {

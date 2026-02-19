@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const socialLinks = [
   { icon: Facebook, href: '#', label: 'Facebook' },
@@ -14,6 +15,7 @@ const socialLinks = [
 
 export default function Footer() {
   const [isMounted, setIsMounted] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsMounted(true);
@@ -52,9 +54,9 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-bold gradient-text mb-4">Dr. John Smith</h3>
+            <h3 className="text-xl font-bold gradient-text mb-4">{t('doctorName')}</h3>
             <p className="text-gray-400 text-sm">
-              Providing premium medical care with cutting-edge technology and compassionate service.
+              {t('footerDescription')}
             </p>
           </motion.div>
 
@@ -65,9 +67,9 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('quickLinks')}</h3>
             <ul className="space-y-2">
-              {['Home', 'About', 'Services', 'Testimonials', 'Contact'].map((link) => (
+              {[t('home'), t('about'), t('services'), t('testimonials'), t('contact')].map((link) => (
                 <li key={link}>
                   <a
                     href={`#${link.toLowerCase()}`}
@@ -87,9 +89,9 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('servicesFooter')}</h3>
             <ul className="space-y-2">
-              {['General Consultation', 'Cardiology', 'Pediatrics', 'Surgery', 'Emergency Care'].map((service) => (
+              {[t('generalConsultationFooter'), t('cardiologyFooter'), t('pediatricsFooter'), t('surgeryFooter'), t('emergencyCareFooter')].map((service) => (
                 <li key={service}>
                   <span className="text-gray-400 text-sm">{service}</span>
                 </li>
@@ -104,7 +106,7 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('contactFooter')}</h3>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-gray-400 text-sm">
                 <Phone size={16} className="text-medical-emerald" />
@@ -154,7 +156,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-center text-gray-500 text-sm border-t border-white/10 pt-8"
         >
-          <p>&copy; {new Date().getFullYear()} Dr. Ahmad Madi. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {t('doctorName')}. {t('copyright')}</p>
         </motion.div>
       </div>
     </footer>

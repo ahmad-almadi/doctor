@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import PageTransition from "@/components/animations/PageTransition";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,13 +30,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
-        <ScrollProgress />
-        <Navbar />
-        <PageTransition>
-          {children}
-        </PageTransition>
-        <Footer />
-        <WhatsAppButton />
+        <LanguageProvider>
+          <ScrollProgress />
+          <Navbar />
+          <PageTransition>
+            {children}
+          </PageTransition>
+          <Footer />
+          <WhatsAppButton />
+        </LanguageProvider>
       </body>
     </html>
   );

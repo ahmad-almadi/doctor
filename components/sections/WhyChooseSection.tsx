@@ -3,43 +3,45 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Shield, Clock, Award, Users, Heart, Zap } from 'lucide-react';
-
-const features = [
-  {
-    icon: Shield,
-    title: 'Expert Care',
-    description: 'Board-certified physicians with years of specialized experience',
-  },
-  {
-    icon: Clock,
-    title: '24/7 Availability',
-    description: 'Round-the-clock emergency support and consultation services',
-  },
-  {
-    icon: Award,
-    title: 'Award Winning',
-    description: 'Recognized for excellence in patient care and medical innovation',
-  },
-  {
-    icon: Users,
-    title: 'Patient-Centered',
-    description: 'Personalized treatment plans tailored to your unique needs',
-  },
-  {
-    icon: Heart,
-    title: 'Compassionate',
-    description: 'Caring approach that treats you as a person, not just a patient',
-  },
-  {
-    icon: Zap,
-    title: 'Modern Technology',
-    description: 'State-of-the-art equipment and cutting-edge medical techniques',
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function WhyChooseSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
+
+  const features = [
+    {
+      icon: Shield,
+      title: t('expertCare'),
+      description: t('expertCareDesc'),
+    },
+    {
+      icon: Clock,
+      title: t('availability'),
+      description: t('availabilityDesc'),
+    },
+    {
+      icon: Award,
+      title: t('awardWinning'),
+      description: t('awardWinningDesc'),
+    },
+    {
+      icon: Users,
+      title: t('patientCentered'),
+      description: t('patientCenteredDesc'),
+    },
+    {
+      icon: Heart,
+      title: t('compassionate'),
+      description: t('compassionateDesc'),
+    },
+    {
+      icon: Zap,
+      title: t('modernTechnology'),
+      description: t('modernTechnologyDesc'),
+    },
+  ];
 
   return (
     <section id="why-choose" ref={ref} className="py-20 relative overflow-hidden">
@@ -61,10 +63,10 @@ export default function WhyChooseSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Why Choose <span className="gradient-text">Dr. John Smith</span>
+            {t('whyChooseTitle')} <span className="gradient-text">{t('doctorName')}</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Experience the difference of premium medical care with a personal touch
+            {t('whyChooseSubtitle')}
           </p>
         </motion.div>
 
@@ -142,10 +144,10 @@ export default function WhyChooseSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: '15+', label: 'Years Experience' },
-              { value: '10K+', label: 'Happy Patients' },
+              { value: '15+', label: t('yearsExperience') },
+              { value: '10K+', label: t('happyPatients') },
               { value: '50+', label: 'Medical Awards' },
-              { value: '98%', label: 'Success Rate' },
+              { value: '98%', label: t('successRate') },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { Calendar, Clock, User, Mail, Phone, MessageSquare, Send } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function AppointmentSection() {
   const ref = useRef(null);
@@ -17,6 +18,7 @@ export default function AppointmentSection() {
   });
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsMounted(true);
@@ -33,11 +35,11 @@ export default function AppointmentSection() {
   };
 
   const inputFields = [
-    { name: 'name', label: 'Full Name', type: 'text', icon: User, placeholder: 'John Doe' },
-    { name: 'email', label: 'Email', type: 'email', icon: Mail, placeholder: 'john@example.com' },
-    { name: 'phone', label: 'Phone', type: 'tel', icon: Phone, placeholder: '+1 (234) 567-8900' },
-    { name: 'date', label: 'Preferred Date', type: 'date', icon: Calendar },
-    { name: 'time', label: 'Preferred Time', type: 'time', icon: Clock },
+    { name: 'name', label: t('fullName'), type: 'text', icon: User, placeholder: t('namePlaceholder') },
+    { name: 'email', label: t('email'), type: 'email', icon: Mail, placeholder: t('emailPlaceholder') },
+    { name: 'phone', label: t('phone'), type: 'tel', icon: Phone, placeholder: t('phonePlaceholder') },
+    { name: 'date', label: t('preferredDate'), type: 'date', icon: Calendar },
+    { name: 'time', label: t('preferredTime'), type: 'time', icon: Clock },
   ];
 
   return (
@@ -74,10 +76,10 @@ export default function AppointmentSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Book an <span className="gradient-text">Appointment</span>
+            {t('appointmentTitle')} <span className="gradient-text">{t('appointmentWord')}</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Schedule your consultation today and take the first step towards better health
+            {t('appointmentSubtitle')}
           </p>
         </motion.div>
 
@@ -140,7 +142,7 @@ export default function AppointmentSection() {
                   className="md:col-span-2"
                 >
                   <label className="block text-sm font-medium mb-2 text-gray-300">
-                    Message (Optional)
+                    {t('message')}
                   </label>
                   <div className="relative">
                     <MessageSquare
@@ -155,7 +157,7 @@ export default function AppointmentSection() {
                       onChange={handleChange}
                       onFocus={() => setFocusedField('message')}
                       onBlur={() => setFocusedField(null)}
-                      placeholder="Tell us about your health concerns..."
+                      placeholder={t('messagePlaceholder')}
                       rows={4}
                       whileFocus={{ scale: 1.02 }}
                       className={`w-full pl-12 pr-4 py-4 bg-white/5 border rounded-xl focus:outline-none transition-all resize-none ${
@@ -179,7 +181,7 @@ export default function AppointmentSection() {
                 className="w-full bg-gradient-to-r from-medical-emerald to-medical-glow text-white py-4 rounded-xl font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-medical-emerald/50 transition-all group"
               >
                 <Send size={20} className="group-hover:translate-x-1 transition-transform" />
-                Book Appointment
+                {t('submitButton')}
               </motion.button>
 
               {/* Info Text */}
@@ -189,7 +191,7 @@ export default function AppointmentSection() {
                 transition={{ duration: 0.5, delay: 0.7 }}
                 className="text-center text-gray-400 text-sm mt-6"
               >
-                We&apos;ll confirm your appointment within 24 hours
+                {t('confirmationText')}
               </motion.p>
             </form>
           </motion.div>
@@ -202,9 +204,9 @@ export default function AppointmentSection() {
             className="grid md:grid-cols-3 gap-6 mt-8"
           >
             {[
-              { icon: Phone, title: 'Call Us', value: '+1 (234) 567-8900', href: 'tel:+1234567890' },
-              { icon: Mail, title: 'Email Us', value: 'info@drsmith.com', href: 'mailto:info@drsmith.com' },
-              { icon: Clock, title: 'Working Hours', value: 'Mon-Fri: 9AM-6PM', href: '#' },
+              { icon: Phone, title: t('callUs'), value: '+1 (234) 567-8900', href: 'tel:+1234567890' },
+              { icon: Mail, title: t('emailUs'), value: 'info@drsmith.com', href: 'mailto:info@drsmith.com' },
+              { icon: Clock, title: t('workingHours'), value: t('workingHoursValue'), href: '#' },
             ].map((item, index) => (
               <motion.a
                 key={item.title}

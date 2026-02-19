@@ -3,50 +3,93 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const testimonials = [
-  {
-    name: 'Sarah Johnson',
-    role: 'Patient',
-    image: '👩‍💼',
-    rating: 5,
-    text: 'Dr. Madi is exceptional! His thorough approach and genuine care made all the difference in my treatment. I finally found a doctor who truly listens.',
-  },
-  {
-    name: 'Michael Chen',
-    role: 'Patient',
-    image: '👨‍💻',
-    rating: 5,
-    text: 'The level of professionalism and expertise is outstanding. Dr. Madi explained everything clearly and made me feel comfortable throughout my treatment.',
-  },
-  {
-    name: 'Emily Rodriguez',
-    role: 'Patient',
-    image: '👩‍🎨',
-    rating: 5,
-    text: 'Best medical experience I\'ve ever had. The clinic is modern, the staff is friendly, and Dr. Madi\'s care is truly world-class.',
-  },
-  {
-    name: 'David Thompson',
-    role: 'Patient',
-    image: '👨‍🔬',
-    rating: 5,
-    text: 'Dr. Madi saved my life with his quick diagnosis and expert treatment. I\'m forever grateful for his dedication and skill.',
-  },
-  {
-    name: 'Lisa Anderson',
-    role: 'Patient',
-    image: '👩‍🏫',
-    rating: 5,
-    text: 'Compassionate, knowledgeable, and always available. Dr. Madi goes above and beyond for his patients. Highly recommended!',
-  },
-];
+const testimonialsData = {
+  en: [
+    {
+      name: 'Sarah Johnson',
+      role: 'Patient',
+      image: '👩‍💼',
+      rating: 5,
+      text: 'Dr. Smith is exceptional! His thorough approach and genuine care made all the difference in my treatment. I finally found a doctor who truly listens.',
+    },
+    {
+      name: 'Michael Chen',
+      role: 'Patient',
+      image: '👨‍💻',
+      rating: 5,
+      text: 'The level of professionalism and expertise is outstanding. Dr. Smith explained everything clearly and made me feel comfortable throughout my treatment.',
+    },
+    {
+      name: 'Emily Rodriguez',
+      role: 'Patient',
+      image: '👩‍🎨',
+      rating: 5,
+      text: 'Best medical experience I have ever had. The clinic is modern, the staff is friendly, and Dr. Smith care is truly world-class.',
+    },
+    {
+      name: 'David Thompson',
+      role: 'Patient',
+      image: '👨‍🔬',
+      rating: 5,
+      text: 'Dr. Smith saved my life with his quick diagnosis and expert treatment. I am forever grateful for his dedication and skill.',
+    },
+    {
+      name: 'Lisa Anderson',
+      role: 'Patient',
+      image: '👩‍🏫',
+      rating: 5,
+      text: 'Compassionate, knowledgeable, and always available. Dr. Smith goes above and beyond for his patients. Highly recommended!',
+    },
+  ],
+  ar: [
+    {
+      name: 'سارة جونسون',
+      role: 'مريضة',
+      image: '👩‍💼',
+      rating: 5,
+      text: 'د. سميث استثنائي! نهجه الشامل ورعايته الحقيقية أحدثت فرقًا كبيرًا في علاجي. أخيرًا وجدت طبيبًا يستمع حقًا.',
+    },
+    {
+      name: 'مايكل تشين',
+      role: 'مريض',
+      image: '👨‍💻',
+      rating: 5,
+      text: 'مستوى الاحترافية والخبرة متميز. د. سميث شرح كل شيء بوضوح وجعلني أشعر بالراحة طوال فترة العلاج.',
+    },
+    {
+      name: 'إميلي رودريغيز',
+      role: 'مريضة',
+      image: '👩‍🎨',
+      rating: 5,
+      text: 'أفضل تجربة طبية مررت بها على الإطلاق. العيادة حديثة، والموظفون ودودون، ورعاية د. سميث عالمية المستوى حقًا.',
+    },
+    {
+      name: 'ديفيد طومسون',
+      role: 'مريض',
+      image: '👨‍🔬',
+      rating: 5,
+      text: 'د. سميث أنقذ حياتي بتشخيصه السريع وعلاجه الخبير. أنا ممتن إلى الأبد لتفانيه ومهارته.',
+    },
+    {
+      name: 'ليزا أندرسون',
+      role: 'مريضة',
+      image: '👩‍🏫',
+      rating: 5,
+      text: 'متعاطف، واسع المعرفة، ومتاح دائمًا. د. سميث يبذل قصارى جهده من أجل مرضاه. أوصي به بشدة!',
+    },
+  ],
+};
 
 export default function TestimonialsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const { t, language } = useLanguage();
+
+  const testimonials = testimonialsData[language];
 
   // Auto-slide
   useEffect(() => {
@@ -97,10 +140,10 @@ export default function TestimonialsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Patient <span className="gradient-text">Testimonials</span>
+            {t('testimonialsTitle')} <span className="gradient-text">{t('testimonialsWord')}</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Hear what our patients have to say about their experience
+            {t('testimonialsSubtitle')}
           </p>
         </motion.div>
 

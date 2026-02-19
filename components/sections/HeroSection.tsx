@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Dynamically import 3D scene to avoid SSR issues
 const MedicalScene = dynamic(() => import('@/components/3d/MedicalScene'), {
@@ -11,6 +12,7 @@ const MedicalScene = dynamic(() => import('@/components/3d/MedicalScene'), {
 });
 
 export default function HeroSection() {
+  const { t, dir } = useLanguage();
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Background */}
@@ -33,7 +35,7 @@ export default function HeroSection() {
           >
             <div className="glass px-6 py-2 rounded-full inline-flex items-center gap-2">
               <span className="w-2 h-2 bg-medical-emerald rounded-full animate-pulse" />
-              <span className="text-sm text-gray-300">Available for Consultation</span>
+              <span className="text-sm text-gray-300">{t('availableForConsultation')}</span>
             </div>
           </motion.div>
 
@@ -44,8 +46,8 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold mb-6"
           >
-            <span className="block text-white">Dr. John Smith</span>
-            <span className="block gradient-text mt-2">Premium Medical Care</span>
+            <span className="block text-white">{t('doctorName')}</span>
+            <span className="block gradient-text mt-2 pb-5">{t('heroTitle')}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -55,7 +57,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 mb-4"
           >
-            Board Certified Internal Medicine Specialist
+            {t('heroSubtitle')}
           </motion.p>
 
           <motion.p
@@ -64,8 +66,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-gray-400 max-w-2xl mx-auto mb-12"
           >
-            Providing compassionate, evidence-based medical care with cutting-edge technology
-            and personalized treatment plans for optimal health outcomes.
+            {t('heroDescription')}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -82,8 +83,8 @@ export default function HeroSection() {
               className="group bg-medical-emerald text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:bg-medical-glow transition-all shadow-lg hover:shadow-medical-emerald/50"
             >
               <Calendar size={20} />
-              Book Appointment
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              {t('bookAppointment')}
+              <ArrowRight size={20} className={`group-hover:translate-x-1 transition-transform ${dir === 'rtl' ? 'rotate-180' : ''}`} />
             </motion.a>
 
             <motion.a
@@ -92,7 +93,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.95 }}
               className="glass glass-hover px-8 py-4 rounded-full font-semibold text-white"
             >
-              View Services
+              {t('viewServices')}
             </motion.a>
           </motion.div>
 
@@ -104,9 +105,9 @@ export default function HeroSection() {
             className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto"
           >
             {[
-              { number: '15+', label: 'Years Experience' },
-              { number: '10K+', label: 'Happy Patients' },
-              { number: '98%', label: 'Success Rate' },
+              { number: '15+', label: t('yearsExperience') },
+              { number: '10K+', label: t('happyPatients') },
+              { number: '98%', label: t('successRate') },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

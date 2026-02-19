@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function LoadingScreen() {
+  const { t } = useLanguage();
   return (
     <motion.div
       initial={{ opacity: 1 }}
@@ -34,7 +36,7 @@ export default function LoadingScreen() {
           transition={{ delay: 0.2 }}
           className="text-2xl font-bold gradient-text mb-4"
         >
-          Dr. John Smith
+          {t('doctorName')}
         </motion.h2>
 
         {/* Loading Bar */}

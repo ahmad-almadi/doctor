@@ -3,61 +3,63 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Heart, Activity, Stethoscope, Pill, Syringe, Brain, Baby, Eye } from 'lucide-react';
-
-const services = [
-  {
-    icon: Stethoscope,
-    title: 'General Consultation',
-    description: 'Comprehensive health assessments and preventive care for all ages',
-    color: 'from-blue-500 to-cyan-500',
-  },
-  {
-    icon: Heart,
-    title: 'Cardiology',
-    description: 'Advanced cardiac care and heart disease prevention programs',
-    color: 'from-red-500 to-pink-500',
-  },
-  {
-    icon: Activity,
-    title: 'Internal Medicine',
-    description: 'Expert diagnosis and treatment of complex medical conditions',
-    color: 'from-emerald-500 to-teal-500',
-  },
-  {
-    icon: Brain,
-    title: 'Neurology',
-    description: 'Specialized care for neurological disorders and brain health',
-    color: 'from-purple-500 to-indigo-500',
-  },
-  {
-    icon: Baby,
-    title: 'Pediatrics',
-    description: 'Gentle, comprehensive care for infants, children, and adolescents',
-    color: 'from-yellow-500 to-orange-500',
-  },
-  {
-    icon: Pill,
-    title: 'Chronic Disease Management',
-    description: 'Long-term care plans for diabetes, hypertension, and more',
-    color: 'from-green-500 to-emerald-500',
-  },
-  {
-    icon: Syringe,
-    title: 'Preventive Care',
-    description: 'Vaccinations, screenings, and wellness programs',
-    color: 'from-cyan-500 to-blue-500',
-  },
-  {
-    icon: Eye,
-    title: 'Health Screenings',
-    description: 'Comprehensive diagnostic tests and health assessments',
-    color: 'from-pink-500 to-rose-500',
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ServicesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      icon: Stethoscope,
+      title: t('generalConsultation'),
+      description: t('generalConsultationDesc'),
+      color: 'from-blue-500 to-cyan-500',
+    },
+    {
+      icon: Heart,
+      title: t('cardiology'),
+      description: t('cardiologyDesc'),
+      color: 'from-red-500 to-pink-500',
+    },
+    {
+      icon: Activity,
+      title: t('internalMedicine'),
+      description: t('internalMedicineDesc'),
+      color: 'from-emerald-500 to-teal-500',
+    },
+    {
+      icon: Brain,
+      title: t('neurology'),
+      description: t('neurologyDesc'),
+      color: 'from-purple-500 to-indigo-500',
+    },
+    {
+      icon: Baby,
+      title: t('pediatrics'),
+      description: t('pediatricsDesc'),
+      color: 'from-yellow-500 to-orange-500',
+    },
+    {
+      icon: Pill,
+      title: t('chronicDisease'),
+      description: t('chronicDiseaseDesc'),
+      color: 'from-green-500 to-emerald-500',
+    },
+    {
+      icon: Syringe,
+      title: t('preventiveCare'),
+      description: t('preventiveCareDesc'),
+      color: 'from-cyan-500 to-blue-500',
+    },
+    {
+      icon: Eye,
+      title: t('healthScreenings'),
+      description: t('healthScreeningsDesc'),
+      color: 'from-pink-500 to-rose-500',
+    },
+  ];
 
   return (
     <section id="services" ref={ref} className="py-20 relative overflow-hidden">
@@ -72,10 +74,10 @@ export default function ServicesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Our <span className="gradient-text">Services</span>
+            {t('servicesTitle')} <span className="gradient-text">{t('servicesWord')}</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Comprehensive medical services tailored to your unique health needs
+            {t('servicesSubtitle')}
           </p>
         </motion.div>
 
@@ -142,7 +144,7 @@ export default function ServicesSection() {
             whileTap={{ scale: 0.95 }}
             className="inline-block bg-medical-emerald text-white px-8 py-4 rounded-full font-semibold hover:bg-medical-glow transition-colors shadow-lg hover:shadow-medical-emerald/50"
           >
-            Schedule a Consultation
+            {t('scheduleConsultation')}
           </motion.a>
         </motion.div>
       </div>
