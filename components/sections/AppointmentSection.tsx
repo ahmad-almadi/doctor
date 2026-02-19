@@ -189,7 +189,7 @@ export default function AppointmentSection() {
                 transition={{ duration: 0.5, delay: 0.7 }}
                 className="text-center text-gray-400 text-sm mt-6"
               >
-                We'll confirm your appointment within 24 hours
+                We&apos;ll confirm your appointment within 24 hours
               </motion.p>
             </form>
           </motion.div>

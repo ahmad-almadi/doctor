@@ -155,7 +155,7 @@ export default function TestimonialsSection() {
                       transition={{ delay: 0.4 }}
                       className="text-lg md:text-xl text-gray-300 text-center mb-8 italic"
                     >
-                      "{testimonials[currentIndex].text}"
+                      &ldquo;{testimonials[currentIndex].text}&rdquo;
                     </motion.p>
 
                     {/* Author */}

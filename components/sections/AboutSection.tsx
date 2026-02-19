@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Award, Users, Clock, Heart } from 'lucide-react';
 import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
 
 const stats = [
   { icon: Award, value: '15+', label: 'Years Experience', color: 'text-blue-400' },
@@ -58,10 +59,13 @@ export default function AboutSection() {
               style={{ transformStyle: 'preserve-3d' }}
             >
               <div className="w-full h-full rounded-2xl overflow-hidden relative">
-                <img 
+                <Image 
                   src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&h=800&fit=crop"
                   alt="Dr. John Smith"
+                  width={800}
+                  height={800}
                   className="w-full h-full object-cover"
+                  priority
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-medical-dark/60 to-transparent" />
