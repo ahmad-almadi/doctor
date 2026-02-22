@@ -10,74 +10,74 @@ const testimonialsData = {
     {
       name: 'Sarah Johnson',
       role: 'Patient',
-      image: '👩‍💼',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
+      text: 'Dr. Smith provided exceptional care during my treatment. His expertise and compassionate approach made all the difference in my recovery.',
       rating: 5,
-      text: 'Dr. Smith is exceptional! His thorough approach and genuine care made all the difference in my treatment. I finally found a doctor who truly listens.',
     },
     {
       name: 'Michael Chen',
       role: 'Patient',
-      image: '👨‍💻',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
+      text: 'Outstanding medical professional! The attention to detail and personalized care plan exceeded my expectations.',
       rating: 5,
-      text: 'The level of professionalism and expertise is outstanding. Dr. Smith explained everything clearly and made me feel comfortable throughout my treatment.',
     },
     {
       name: 'Emily Rodriguez',
       role: 'Patient',
-      image: '👩‍🎨',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
+      text: 'I highly recommend Dr. Smith. His thorough approach and clear communication helped me understand my condition better.',
       rating: 5,
-      text: 'Best medical experience I have ever had. The clinic is modern, the staff is friendly, and Dr. Smith care is truly world-class.',
     },
     {
       name: 'David Thompson',
       role: 'Patient',
-      image: '👨‍🔬',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop',
+      text: 'Professional, knowledgeable, and caring. Dr. Smith takes time to listen and provides comprehensive treatment plans.',
       rating: 5,
-      text: 'Dr. Smith saved my life with his quick diagnosis and expert treatment. I am forever grateful for his dedication and skill.',
     },
     {
       name: 'Lisa Anderson',
       role: 'Patient',
-      image: '👩‍🏫',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop',
+      text: 'The best doctor I have ever had. His dedication to patient care and medical excellence is truly remarkable.',
       rating: 5,
-      text: 'Compassionate, knowledgeable, and always available. Dr. Smith goes above and beyond for his patients. Highly recommended!',
     },
   ],
   ar: [
     {
       name: 'سارة جونسون',
       role: 'مريضة',
-      image: '👩‍💼',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
+      text: 'قدم د. سميث رعاية استثنائية خلال علاجي. خبرته ونهجه الرحيم أحدثا فرقًا كبيرًا في تعافيي.',
       rating: 5,
-      text: 'د. سميث استثنائي! نهجه الشامل ورعايته الحقيقية أحدثت فرقًا كبيرًا في علاجي. أخيرًا وجدت طبيبًا يستمع حقًا.',
     },
     {
       name: 'مايكل تشين',
       role: 'مريض',
-      image: '👨‍💻',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
+      text: 'طبيب محترف متميز! الاهتمام بالتفاصيل وخطة الرعاية الشخصية تجاوزت توقعاتي.',
       rating: 5,
-      text: 'مستوى الاحترافية والخبرة متميز. د. سميث شرح كل شيء بوضوح وجعلني أشعر بالراحة طوال فترة العلاج.',
     },
     {
       name: 'إميلي رودريغيز',
       role: 'مريضة',
-      image: '👩‍🎨',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
+      text: 'أوصي بشدة بالدكتور سميث. نهجه الشامل وتواصله الواضح ساعداني على فهم حالتي بشكل أفضل.',
       rating: 5,
-      text: 'أفضل تجربة طبية مررت بها على الإطلاق. العيادة حديثة، والموظفون ودودون، ورعاية د. سميث عالمية المستوى حقًا.',
     },
     {
       name: 'ديفيد طومسون',
       role: 'مريض',
-      image: '👨‍🔬',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop',
+      text: 'محترف وذو معرفة ورعاية. يأخذ د. سميث الوقت للاستماع ويقدم خطط علاج شاملة.',
       rating: 5,
-      text: 'د. سميث أنقذ حياتي بتشخيصه السريع وعلاجه الخبير. أنا ممتن إلى الأبد لتفانيه ومهارته.',
     },
     {
       name: 'ليزا أندرسون',
       role: 'مريضة',
-      image: '👩‍🏫',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop',
+      text: 'أفضل طبيب قابلته على الإطلاق. تفانيه في رعاية المرضى والتميز الطبي رائع حقًا.',
       rating: 5,
-      text: 'متعاطف، واسع المعرفة، ومتاح دائمًا. د. سميث يبذل قصارى جهده من أجل مرضاه. أوصي به بشدة!',
     },
   ],
 };
@@ -98,9 +98,19 @@ export default function TestimonialsSection() {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [language, testimonials.length]);
 
-  const slideVariants = {
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setCurrentIndex((prev) => {
+      if (newDirection === 1) {
+        return (prev + 1) % testimonials.length;
+      }
+      return prev === 0 ? testimonials.length - 1 : prev - 1;
+    });
+  };
+
+  const variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
       opacity: 0,
@@ -117,44 +127,34 @@ export default function TestimonialsSection() {
     }),
   };
 
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setCurrentIndex((prev) => {
-      const next = prev + newDirection;
-      if (next < 0) return testimonials.length - 1;
-      if (next >= testimonials.length) return 0;
-      return next;
-    });
-  };
-
   return (
-    <section id="testimonials" ref={ref} className="py-20 relative overflow-hidden">
+    <section id="testimonials" ref={ref} className="py-10 sm:py-12 md:py-16 lg:py-20 relative overflow-hidden scroll-mt-20">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-medical-dark via-medical-blue/5 to-medical-dark" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16 px-4"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-2 sm:mb-3 md:mb-4 lg:mb-6">
             {t('testimonialsTitle')} <span className="gradient-text">{t('testimonialsWord')}</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">
             {t('testimonialsSubtitle')}
           </p>
         </motion.div>
 
-        {/* Carousel */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="relative h-[400px] md:h-[350px]">
+        <div className="max-w-4xl mx-auto relative">
+          {/* Testimonial Card */}
+          <div className="relative h-[400px] flex items-center justify-center">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
                 custom={direction}
-                variants={slideVariants}
+                variants={variants}
                 initial="enter"
                 animate="center"
                 exit="exit"
@@ -166,56 +166,32 @@ export default function TestimonialsSection() {
               >
                 <div className="glass p-8 md:p-12 rounded-3xl relative">
                   {/* Quote Icon */}
-                  <motion.div
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="absolute top-8 left-8 text-medical-emerald/20"
-                  >
-                    <Quote size={60} />
-                  </motion.div>
+                  <Quote className="absolute top-8 left-8 w-12 h-12 text-medical-emerald/20" />
 
-                  {/* Content */}
-                  <div className="relative z-10">
-                    {/* Stars */}
-                    <div className="flex justify-center gap-1 mb-6">
-                      {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.3 + i * 0.1 }}
-                        >
-                          <Star className="fill-yellow-400 text-yellow-400" size={24} />
-                        </motion.div>
-                      ))}
+                  {/* Stars */}
+                  <div className="flex justify-center gap-1 mb-6">
+                    {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-medical-emerald text-medical-emerald" />
+                    ))}
+                  </div>
+
+                  {/* Text */}
+                  <p className="text-gray-300 text-lg md:text-xl text-center mb-8 leading-relaxed">
+                    &quot;{testimonials[currentIndex].text}&quot;
+                  </p>
+
+                  {/* Author */}
+                  <div className="flex items-center justify-center gap-4">
+                    <motion.img
+                      whileHover={{ scale: 1.1 }}
+                      src={testimonials[currentIndex].image}
+                      alt={testimonials[currentIndex].name}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-medical-emerald"
+                    />
+                    <div>
+                      <div className="font-bold text-lg">{testimonials[currentIndex].name}</div>
+                      <div className="text-gray-400 text-sm">{testimonials[currentIndex].role}</div>
                     </div>
-
-                    {/* Text */}
-                    <motion.p
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
-                      className="text-lg md:text-xl text-gray-300 text-center mb-8 italic"
-                    >
-                      &ldquo;{testimonials[currentIndex].text}&rdquo;
-                    </motion.p>
-
-                    {/* Author */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="flex items-center justify-center gap-4"
-                    >
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-medical-emerald to-medical-glow flex items-center justify-center text-3xl">
-                        {testimonials[currentIndex].image}
-                      </div>
-                      <div className="text-left">
-                        <div className="font-bold text-lg">{testimonials[currentIndex].name}</div>
-                        <div className="text-gray-400">{testimonials[currentIndex].role}</div>
-                      </div>
-                    </motion.div>
                   </div>
                 </div>
               </motion.div>
@@ -230,36 +206,32 @@ export default function TestimonialsSection() {
               onClick={() => paginate(-1)}
               className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-medical-emerald/20 transition-colors"
             >
-              <ChevronLeft className="text-medical-emerald" />
+              <ChevronLeft className="w-6 h-6" />
             </motion.button>
-
-            {/* Dots */}
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, index) => (
-                <motion.button
-                  key={index}
-                  whileHover={{ scale: 1.2 }}
-                  onClick={() => {
-                    setDirection(index > currentIndex ? 1 : -1);
-                    setCurrentIndex(index);
-                  }}
-                  className={`h-2 rounded-full transition-all ${
-                    index === currentIndex
-                      ? 'w-8 bg-medical-emerald'
-                      : 'w-2 bg-gray-600 hover:bg-gray-500'
-                  }`}
-                />
-              ))}
-            </div>
-
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => paginate(1)}
               className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-medical-emerald/20 transition-colors"
             >
-              <ChevronRight className="text-medical-emerald" />
+              <ChevronRight className="w-6 h-6" />
             </motion.button>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setDirection(index > currentIndex ? 1 : -1);
+                  setCurrentIndex(index);
+                }}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentIndex ? 'bg-medical-emerald w-8' : 'bg-gray-600'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>

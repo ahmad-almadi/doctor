@@ -43,7 +43,7 @@ export default function AppointmentSection() {
   ];
 
   return (
-    <section id="appointment" ref={ref} className="py-20 relative overflow-hidden">
+    <section id="appointment" ref={ref} className="py-10 sm:py-12 md:py-16 lg:py-20 relative overflow-hidden scroll-mt-20">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-medical-dark via-medical-blue/10 to-medical-dark" />
@@ -73,12 +73,12 @@ export default function AppointmentSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16 px-4"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-2 sm:mb-3 md:mb-4 lg:mb-6">
             {t('appointmentTitle')} <span className="gradient-text">{t('appointmentWord')}</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">
             {t('appointmentSubtitle')}
           </p>
         </motion.div>

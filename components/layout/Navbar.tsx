@@ -46,14 +46,14 @@ export default function Navbar() {
           <Link href="/">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold gradient-text"
+              className="text-xl lg:text-2xl xl:text-3xl font-bold gradient-text"
             >
               {t('doctorName')}
             </motion.div>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
             {navLinks.map((link, index) => (
               <motion.a
                 key={link.name}
@@ -61,7 +61,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="text-gray-300 hover:text-medical-emerald transition-colors relative group"
+                className="text-gray-300 hover:text-medical-emerald transition-colors relative group text-sm lg:text-base xl:text-lg"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-medical-emerald group-hover:w-full transition-all duration-300" />
@@ -74,11 +74,11 @@ export default function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-                className="flex items-center gap-2 px-4 py-2 rounded-full glass hover:bg-white/10 transition-colors"
+                className="flex items-center gap-2 px-3 lg:px-4 py-2 rounded-full glass hover:bg-white/10 transition-colors"
                 title={language === 'en' ? 'Switch to Arabic' : 'التبديل إلى الإنجليزية'}
               >
-                <Globe size={18} />
-                <span className="text-sm font-medium">{language === 'en' ? 'AR' : 'EN'}</span>
+                <Globe className="w-4 h-4 lg:w-5 lg:h-5" />
+                <span className="text-xs lg:text-sm font-medium">{language === 'en' ? 'AR' : 'EN'}</span>
               </motion.button>
             )}
 
@@ -86,9 +86,9 @@ export default function Navbar() {
               href="tel:+1234567890"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-medical-emerald text-white px-6 py-2 rounded-full hover:bg-medical-glow transition-colors"
+              className="flex items-center gap-2 bg-medical-emerald text-white px-4 lg:px-6 xl:px-8 py-2 lg:py-3 rounded-full hover:bg-medical-glow transition-colors text-sm lg:text-base xl:text-lg"
             >
-              <Phone size={18} />
+              <Phone className="w-4 h-4 lg:w-5 lg:h-5" />
               {t('callNow')}
             </motion.a>
           </div>
@@ -131,7 +131,7 @@ export default function Navbar() {
                   }}
                   className="flex items-center justify-center gap-2 glass px-6 py-3 rounded-full hover:bg-white/10 transition-colors"
                 >
-                  <Globe size={18} />
+                  <Globe className="w-4 h-4" />
                   <span>{language === 'en' ? 'العربية' : 'English'}</span>
                 </button>
 
@@ -139,7 +139,7 @@ export default function Navbar() {
                   href="tel:+1234567890"
                   className="flex items-center justify-center gap-2 bg-medical-emerald text-white px-6 py-3 rounded-full hover:bg-medical-glow transition-colors"
                 >
-                  <Phone size={18} />
+                  <Phone className="w-4 h-4" />
                   {t('callNow')}
                 </a>
               </div>

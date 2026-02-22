@@ -46,8 +46,8 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* About */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -69,16 +69,31 @@ export default function Footer() {
           >
             <h3 className="text-lg font-semibold mb-4">{t('quickLinks')}</h3>
             <ul className="space-y-2">
-              {[t('home'), t('about'), t('services'), t('testimonials'), t('contact')].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="text-gray-400 hover:text-medical-emerald transition-colors text-sm"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href="#home" className="text-gray-400 hover:text-medical-emerald transition-colors text-sm">
+                  {t('home')}
+                </a>
+              </li>
+              <li>
+                <a href="#about" className="text-gray-400 hover:text-medical-emerald transition-colors text-sm">
+                  {t('about')}
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-gray-400 hover:text-medical-emerald transition-colors text-sm">
+                  {t('services')}
+                </a>
+              </li>
+              <li>
+                <a href="#testimonials" className="text-gray-400 hover:text-medical-emerald transition-colors text-sm">
+                  {t('testimonials')}
+                </a>
+              </li>
+              <li>
+                <a href="#appointment" className="text-gray-400 hover:text-medical-emerald transition-colors text-sm">
+                  {t('contact')}
+                </a>
+              </li>
             </ul>
           </motion.div>
 

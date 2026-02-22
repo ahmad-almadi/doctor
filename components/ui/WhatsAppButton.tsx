@@ -16,10 +16,10 @@ export default function WhatsAppButton() {
       transition={{ delay: 1, type: 'spring', stiffness: 260, damping: 20 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-2xl hover:shadow-green-500/50 transition-shadow group"
+      className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-2xl hover:shadow-green-500/50 transition-shadow group"
       aria-label="Contact on WhatsApp"
     >
-      <MessageCircle className="text-white" size={28} />
+      <MessageCircle className="text-white w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
       
       {/* Pulse Animation */}
       <motion.div
@@ -35,8 +35,8 @@ export default function WhatsAppButton() {
         }}
       />
 
-      {/* Tooltip */}
-      <div className="absolute right-full mr-4 px-4 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+      {/* Tooltip - Hidden on mobile */}
+      <div className="hidden md:block absolute right-full mr-4 px-4 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
         {t('chatOnWhatsApp')}
         <div className="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2 border-8 border-transparent border-l-gray-900" />
       </div>

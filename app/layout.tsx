@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   description: "Expert medical consultation and premium healthcare services",
   keywords: "doctor, medical, healthcare, consultation, clinic",
   authors: [{ name: "Dr. John Smith" }],
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     title: "Dr. John Smith - Premium Medical Care",
     description: "Expert medical consultation and premium healthcare services",
