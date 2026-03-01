@@ -68,7 +68,7 @@ export default function AppointmentSection() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -83,19 +83,19 @@ export default function AppointmentSection() {
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="glass p-8 md:p-12 rounded-3xl relative overflow-hidden"
+            className="glass p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl sm:rounded-3xl relative overflow-hidden"
           >
             {/* Glow Effect */}
             <div className="absolute -top-40 -right-40 w-80 h-80 bg-medical-emerald/10 rounded-full blur-3xl" />
             <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-medical-glow/10 rounded-full blur-3xl" />
 
             <form onSubmit={handleSubmit} className="relative z-10">
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                 {inputFields.map((field, index) => (
                   <motion.div
                     key={field.name}
@@ -104,15 +104,15 @@ export default function AppointmentSection() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className={field.name === 'message' ? 'md:col-span-2' : ''}
                   >
-                    <label className="block text-sm font-medium mb-2 text-gray-300">
+                    <label className="block text-xs sm:text-sm font-medium mb-2 text-gray-300">
                       {field.label}
                     </label>
                     <div className="relative">
                       <field.icon
-                        className={`absolute left-4 top-1/2 transform -translate-y-1/2 transition-colors ${
+                        className={`absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 transition-colors ${
                           focusedField === field.name ? 'text-medical-emerald' : 'text-gray-500'
                         }`}
-                        size={20}
+                        size={18}
                       />
                       <motion.input
                         type={field.type}
@@ -123,8 +123,8 @@ export default function AppointmentSection() {
                         onBlur={() => setFocusedField(null)}
                         placeholder={field.placeholder}
                         required
-                        whileFocus={{ scale: 1.02 }}
-                        className={`w-full pl-12 pr-4 py-4 bg-white/5 border rounded-xl focus:outline-none transition-all ${
+                        whileFocus={{ scale: 1.01 }}
+                        className={`w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/5 border rounded-xl focus:outline-none transition-all text-sm sm:text-base ${
                           focusedField === field.name
                             ? 'border-medical-emerald shadow-lg shadow-medical-emerald/20'
                             : 'border-white/10'
@@ -141,15 +141,15 @@ export default function AppointmentSection() {
                   transition={{ duration: 0.5, delay: 0.5 }}
                   className="md:col-span-2"
                 >
-                  <label className="block text-sm font-medium mb-2 text-gray-300">
+                  <label className="block text-xs sm:text-sm font-medium mb-2 text-gray-300">
                     {t('message')}
                   </label>
                   <div className="relative">
                     <MessageSquare
-                      className={`absolute left-4 top-4 transition-colors ${
+                      className={`absolute left-3 sm:left-4 top-4 transition-colors ${
                         focusedField === 'message' ? 'text-medical-emerald' : 'text-gray-500'
                       }`}
-                      size={20}
+                      size={18}
                     />
                     <motion.textarea
                       name="message"
@@ -159,8 +159,8 @@ export default function AppointmentSection() {
                       onBlur={() => setFocusedField(null)}
                       placeholder={t('messagePlaceholder')}
                       rows={4}
-                      whileFocus={{ scale: 1.02 }}
-                      className={`w-full pl-12 pr-4 py-4 bg-white/5 border rounded-xl focus:outline-none transition-all resize-none ${
+                      whileFocus={{ scale: 1.01 }}
+                      className={`w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/5 border rounded-xl focus:outline-none transition-all resize-none text-sm sm:text-base ${
                         focusedField === 'message'
                           ? 'border-medical-emerald shadow-lg shadow-medical-emerald/20'
                           : 'border-white/10'
