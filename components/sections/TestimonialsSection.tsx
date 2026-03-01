@@ -205,16 +205,18 @@ export default function TestimonialsSection() {
               whileTap={{ scale: 0.9 }}
               onClick={() => paginate(-1)}
               className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-medical-emerald/20 transition-colors"
+              aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-6 h-6 rtl:rotate-180" />
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => paginate(1)}
               className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-medical-emerald/20 transition-colors"
+              aria-label="Next testimonial"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-6 h-6 rtl:rotate-180" />
             </motion.button>
           </div>
 
